@@ -11,21 +11,24 @@ export default {
         }
     },
     components: { IngredienteSelecionavel },
-    emits: ['adicionarIngrediente']
+    emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
 <template>
     <article class="categoria">
         <header class="categoria__cabecalho">
-            <img :src="`/imagens/icones/categorias_ingredientes/${categoria.imagem}`" alt="" class="categoria__imagem">
+            <img :src="`/images/icons/ingredient_categories/${categoria.imagem}`" alt="Imagem"
+                class="categoria__imagem">
 
             <h2 class="paragrafo-lg categoria__nome">{{ categoria.nome }}</h2>
         </header>
 
         <ul class="categoria__ingredientes">
             <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-                <IngredienteSelecionavel v-bind:ingrediente="ingrediente" v-on:adicionar-ingrediente="$emit('adicionarIngrediente', $event)"/>
+                <IngredienteSelecionavel :ingrediente="ingrediente"
+                    @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+                    @remover-ingrediente="$emit('removerIngrediente', $event)" />
             </li>
         </ul>
     </article>

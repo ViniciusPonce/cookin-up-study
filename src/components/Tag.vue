@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-    <span v-bind:class="['tag', { ativa }]">
+    <span :class="['tag', { ativa }]">
         {{ texto }}
     </span>
 </template>

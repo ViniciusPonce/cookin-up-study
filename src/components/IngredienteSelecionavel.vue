@@ -5,12 +5,12 @@ export default {
     props: {
         ingrediente: { type: String, required: true }
     },
-    components: { Tag },
     data() {
         return {
             selecionado: false
         }
     },
+    components: { Tag },
     methods: {
         aoClicar() {
             this.selecionado = !this.selecionado;
@@ -27,8 +27,8 @@ export default {
 </script>
 
 <template>
-    <button class="ingrediente" v-on:click="aoClicar()" v-on:aria-pressed="selecionado">
-        <Tag v-bind:texto="ingrediente" v-bind:ativa="selecionado" />
+    <button class="ingrediente" @click="aoClicar()" @:aria-pressed="selecionado">
+        <Tag :texto="ingrediente" :ativa="selecionado" />
     </button>
 </template>
 
